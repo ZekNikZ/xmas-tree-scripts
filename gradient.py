@@ -1,11 +1,9 @@
 import time
-import board
 import neopixel
 import colorsys
+from constants import *
 
-NUM_PIXELS = 200
-
-pixels = neopixel.NeoPixel(board.D18, NUM_PIXELS, auto_write=True)
+pixels = neopixel.NeoPixel(pin, num_pixels, pixel_order=neopixel.GRB)
 pixels.brightness = 0.6
 
 j = 0

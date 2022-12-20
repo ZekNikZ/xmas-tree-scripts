@@ -1,22 +1,20 @@
 import time
-import board
 import neopixel
 import colorsys
 import random
-from coords import coords
+from constants import *
 import math
 
-NUM_PIXELS = 300
 DELAY = 0.01 # seconds
 ROTATION_PERIOD = 2 # seconds
 TWIST_PERIOD = 1.5
 
-pixels = neopixel.NeoPixel(board.D12, NUM_PIXELS, auto_write=False)
+pixels = neopixel.NeoPixel(pin, num_pixels, auto_write=False, pixel_order=neopixel.GRB)
 pixels.brightness = 1
 
 t = 0
 while True:
-    for i in range(NUM_PIXELS):
+    for i in range(num_pixels):
         angle = math.atan2(coords[i][1], coords[i][0]) + math.pi
         angle += coords[i][2] / 450 * 2 * math.pi * TWIST_PERIOD
         if ROTATION_PERIOD > 0:

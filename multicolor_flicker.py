@@ -1,10 +1,9 @@
 import time
-import board
 import neopixel
 import colorsys
 import random
+from constants import *
 
-NUM_PIXELS = 300
 COLORS = [
     (255, 0, 0),
     (0, 255, 0),
@@ -23,13 +22,13 @@ MIN_FLICKER_TIME = int(MIN_FLICKER_TIME / DELAY)
 MAX_FLICKER_TIME = int(MAX_FLICKER_TIME / DELAY)
 INITIAL_TIME = int(3 / DELAY)
 
-pixels = neopixel.NeoPixel(board.D12, NUM_PIXELS, auto_write=False)
+pixels = neopixel.NeoPixel(pin, num_pixels, auto_write=False, pixel_order=neopixel.GRB)
 pixels.brightness = 1
 
-data = [[(0, 0, 0), INITIAL_TIME, INITIAL_TIME, (255, 255, 255)] for _ in range(NUM_PIXELS)]
+data = [[(0, 0, 0), INITIAL_TIME, INITIAL_TIME, (255, 255, 255)] for _ in range(num_pixels)]
 
 while True:
-    for i in range(NUM_PIXELS):
+    for i in range(num_pixels):
         pixel_data = data[i]
         old_color, counter, max_counter, new_color = pixel_data
 
